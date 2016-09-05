@@ -1,0 +1,56 @@
+{% extends "bootstrap/base.html" %}
+{% block title %} Revel Hackathon Webhooks {% endblock %}
+{% block navbar %}
+    <nav class="navbar navbar-default navbar-static-top " role="navigation" style="margin-bottom: 0">
+        <a class="navbar-brand" href="#">Revel Hackathon Webhooks</a>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+            <h1 class="page-header"> </h1>
+
+            {% for table, resources in tables.items() %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{table|replace("_", " ")|title}}
+                </div>
+
+                <div class="panel-body">
+                    <table class="{{table}} table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th class='text-center'>Revel ID</th>
+                                <th class='text-center'>Created Date</th>
+                                <th class='text-center'>Updated Date</th>
+                                <th class='text-center'>Content</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for resource in resources %}
+                                <tr>                
+                                    <td class='text-center'> {{resource.revel_id}} </td>
+                                    <td class='text-center'> {{resource.created_date}} </td>
+                                    <td class='text-center'> {{resource.updated_date}} </td>
+                                    <td class='text-center' > <a target='_blank' href="/resource/{{resource.id}}">json</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% else %}
+                <div class="alert alert-info" role="alert">
+                    <strong>You still haven't received any data.</strong>
+                    Please make sure that you have set up webhooks correctly under settings in Management Console.</br></br>
+                    Webhooks enpoints example:</br>
+                        * Order finalized - https://****.com/order/finalized/</br>
+                        * Customer created - https://****.com/customer/created/</br>
+                        * Customer updated - https://****.com/customer/updated/</br>
+                        * Rewardcard created - https://****.com/rewardcard/created/</br>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
