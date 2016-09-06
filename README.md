@@ -59,7 +59,7 @@ Add PostgreSQL to Heroku:
 
 _It is **important** to switch YELLOW_COLOR_POSTGRESQL_NAME with the colored DB name shown to you after adding the heroku-postgresql to heroku._
 
-Initialize database running a `initdb` command:
+Initialize database running with `initdb` command:
 
     $ heroku run python run.py initdb
 
