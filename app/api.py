@@ -58,8 +58,6 @@ def customer_created():
     db.session.add(obj)
     db.session.commit()
 
-    print("Customer : '{}' is created! \nData: {}".format(request.json['first_name'], request.json))
-
     return jsonify(**request.json), 201
 
 
@@ -82,8 +80,6 @@ def customer_updated():
     db.session.add(obj)
     db.session.commit()
 
-    print("Customer : '{}' is updated! \nData: {}".format(request.json['first_name'], request.json))
-
     return jsonify(**request.json), 201
 
 
@@ -103,7 +99,5 @@ def rewardcard_created():
 
     db.session.add(obj)
     db.session.commit()
-
-    print ("Reward Card Created! \nData:{}".format(request.json))
 
     return jsonify(**request.json), 201
