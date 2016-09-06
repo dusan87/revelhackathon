@@ -57,7 +57,9 @@ Assuming that [ngrok](https://ngrok.com/) is installed successfully, you just ne
     $ ./ngrok http 5000
 
 You should be provided with ngrok running infomation like this:
-    ![Ngrok Info](https://cl.ly/1L2L2J3V2w18)
+
+<img width="400" alt="screen shot 2016-09-06 at 1 30 42 pm" src="https://cloud.githubusercontent.com/assets/3380583/18262221/f2766c90-7442-11e6-920f-1f3e51526601.png">
+
 
 
 Revel webhook functionality requires a secure https URL. To link webhooks with local running app you must take https url that `ngrok` created for you:
