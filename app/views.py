@@ -20,7 +20,8 @@ def list_content():
         resource_data = {'id': resource.id, 
                          'revel_id': resource.revel_id,
                          'created_date': resource.created_date,
-                         'updated_date': resource.updated_date
+                         'updated_date': resource.updated_date,
+                         'revel_url': resource.revel_url
                          }
 
         key = resource.name_plural if not resource.updated else 'updated_%s' % resource.name_plural       

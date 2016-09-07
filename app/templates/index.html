@@ -21,6 +21,7 @@
                     <table class="{{table}} table table-striped table-hover">
                         <thead>
                             <tr>
+                                <th class="text-center">Revel URL</th>
                                 <th class='text-center'>Revel ID</th>
                                 <th class='text-center'>Created Date</th>
                                 <th class='text-center'>Updated Date</th>
@@ -29,11 +30,12 @@
                         </thead>
                         <tbody>
                             {% for resource in resources %}
-                                <tr>                
-                                    <td class='text-center'> {{resource.revel_id}} </td>
-                                    <td class='text-center'> {{resource.created_date}} </td>
-                                    <td class='text-center'> {{resource.updated_date}} </td>
-                                    <td class='text-center' > <a target='_blank' href="/resource/{{resource.id}}">json</a></td>
+                                <tr>
+                                    <td class="text-center"> {{ resource.revel_url }} </td>
+                                    <td class='text-center'> {{ resource.revel_id }} </td>
+                                    <td class='text-center'> {{ resource.created_date }} </td>
+                                    <td class='text-center'> {{ resource.updated_date }} </td>
+                                    <td class='text-center' > <a target='_blank' href="/resource/{{ resource.id }}">json</a></td>
                                 </tr>
                             {% endfor %}
                         </tbody>

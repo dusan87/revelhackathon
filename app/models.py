@@ -11,7 +11,7 @@ class RevelResource(db.Model):
     revel_id = db.Column(db.Integer, doc='ID of resource on in Revel system')
     updated = db.Column(db.Boolean, default=False, doc='Helper for filtering while displaying')
     name = db.Column(db.String, doc='Helper for keeping Revel resource name for filtering while displaying')
-
+    revel_url = db.Column(db.String, doc='Revel instance url from which webhook is received.')
     created_date = db.Column(db.String, doc='Expose an idea how to manipulate received data')
     updated_date = db.Column(db.String, default='---', doc='Expose an idea how to manipulate received data')
     data = db.Column(db.String, doc=("Content of created/updated resource." 
