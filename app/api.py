@@ -23,9 +23,17 @@ def format_date(date_str):
     return date_str.split('.')[0]
 
 
+def instance_url(req):
+    """This is a helper to compose full revelup url based on X-Revel-Instance header"""
+    instance_name = req.headers['X-Revel-Instance']
+    return '%s.revelup.com' % instance_name
+
+
 @app.route('/order/finalized/', methods=['POST'])
 def order_finalized():
     """Endpoint that is triggered once order is finalized."""
+    revel_url = instance_url(req=request)
+
     payload = request.json
 
     revel_id = payload['orderInfo']['id']
@@ -34,6 +42,7 @@ def order_finalized():
     obj = RevelResource(revel_id=revel_id,
                         created_date=created_date,
                         name='order',
+                        revel_url=revel_url,
                         data=request.data)
 
     db.session.add(obj)
@@ -45,6 +54,8 @@ def order_finalized():
 @app.route('/customer/created/', methods=['POST'])
 def customer_created():
     """Endpoint that is triggered once a customer is created."""
+    revel_url = instance_url(req=request)
+
     payload = request.json
 
     revel_id = payload['id']
@@ -52,6 +63,7 @@ def customer_created():
 
     obj = RevelResource(revel_id=revel_id,
                         created_date=created_date,
+                        revel_url=revel_url,
                         name='customer',
                         data=request.data)
 
@@ -64,6 +76,8 @@ def customer_created():
 @app.route('/customer/updated/', methods=['POST'])
 def customer_updated():
     """Endpoint that is triggered once a customer is updated."""
+    revel_url = instance_url(req=request)
+
     payload = request.json
 
     revel_id = payload['id']
@@ -73,6 +87,7 @@ def customer_updated():
     obj = RevelResource(revel_id=revel_id,
                         created_date=created_date,
                         updated_date=updated_date,
+                        revel_url=revel_url,
                         name='customer',
                         updated=True,
                         data=request.data)
@@ -86,6 +101,7 @@ def customer_updated():
 @app.route('/rewardcard/created/', methods=['POST'])
 def rewardcard_created():
     """Endpoint that is triggered once reward card is created."""
+    revel_url = instance_url(req=request)
 
     payload = request.json
 
@@ -94,6 +110,7 @@ def rewardcard_created():
 
     obj = RevelResource(revel_id=revel_id,
                         created_date=created_date,
+                        revel_url=revel_url,
                         name='rewardcard',
                         data=request.data)
 
