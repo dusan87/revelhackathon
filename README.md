@@ -36,9 +36,18 @@ First make sure to create and activate a _virtualenv_, then open a terminal at t
 
 .. _virtualenv_: http://docs.python-guide.org/en/latest/dev/virtualenvs/
 
-Run the database initialization(please make sure postgreSQL is running and a **_revelhackathon_** database is created):
+Set `FLASK_APP` env variable:
+
+    $ export FLASK_APP=run.py
+
+_Note: you can set it in the project settings as well._
+
+Run database initialization(please make sure postgreSQL is running and a **_revelhackathon_** database is created):
 
     $ python run.py initdb
+
+Run flask migrations:
+    $ flask db upgrade
 
 You can now run the ``application`` command::
 
